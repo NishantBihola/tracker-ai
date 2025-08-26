@@ -1,0 +1,31 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Expense {
+  id           String   @id @default(cuid())
+  clerkUserId  String
+  date         DateTime
+  description  String
+  category     String
+  amount       Float
+  createdAt    DateTime @default(now())
+
+  @@index([clerkUserId])
+}
+
+model Budget {
+  id           String   @id @default(cuid())
+  clerkUserId  String
+  category     String
+  limit        Float
+  createdAt    DateTime @default(now())
+
+  @@unique([clerkUserId, category]) // one budget per category
+}
