@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    // ✅ Allow console logs in production builds
+    "no-console": "off",
+
+    // ✅ Allow `any` if absolutely needed
+    "@typescript-eslint/no-explicit-any": "warn",
+
+    // ✅ Don’t block builds for unused vars (warn instead)
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+
+    // ✅ Make imports and React hooks safe
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}
